@@ -1,0 +1,32 @@
+.panel-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: .5;
+    background-color: #000;
+}
+
+.multiple-draggable-panel {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    outline: none;
+    opacity: 0;
+}
+
+.center-panel {
+    left: 50%;
+    top: 50%;
+    /* transform: translate(-50%, -50%); */
+}
+
+.fade-in-out {
+    transition: opacity 0.2s linear;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+    opacity: 0;
+}
