@@ -1,0 +1,28 @@
+<mat-card class="panel-container py-2">
+    <div class="panel-header">
+        <div class="d-flex flex-row justify-content-between">
+            <div class="panel-header-title me-3">
+                {{ title }}
+            </div>
+            <div class="panel-header-buttons d-flex flex-row">
+                <mat-icon class="panel-action-btn open-new-tab" (click)="this.showPortal=true">open_in_new</mat-icon>
+                <mat-icon class="panel-action-btn show-data" (click)="showData()"
+                    [ngClass]=" isShowingData? 'panel-open': ''"
+                >expand_more</mat-icon>
+                <mat-icon class="panel-action-btn close">close</mat-icon>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" *ngIf="isShowingData">
+        <hr class="m-0 w-100 my-1">
+        <div>
+            {{Data}}
+            <div [innerHTML]="Data.content"></div>
+        </div>
+    </div>
+</mat-card>
+<app-external-frame *ngIf="showPortal" [title]="title">
+    <h2>Mostrando información desde otra ventana</h2>
+    {{ title }}
+    {{ Data }}
+</app-external-frame>

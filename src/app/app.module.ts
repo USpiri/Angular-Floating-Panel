@@ -9,7 +9,10 @@ import { PanelComponent } from './components/panels-container/panel/panel.compon
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ExampleComponent } from './components/example/example.component'
 import { MatCardModule } from '@angular/material/card';
-
+import { MatIconModule } from '@angular/material/icon';
+import { PanelFrameComponent } from './components/panels-container/panel/panel-frame/panel-frame.component';
+import { ExternalFrameComponent } from './components/panels-container/panel/panel-frame/external-frame/external-frame.component';
+import { PortalModule } from '@angular/cdk/portal';
 
 @NgModule({
   declarations: [
@@ -17,13 +20,17 @@ import { MatCardModule } from '@angular/material/card';
     MainContainerComponent,
     PanelsContainerComponent,
     PanelComponent,
-    ExampleComponent
+    ExampleComponent,
+    PanelFrameComponent,
+    ExternalFrameComponent
   ],
   imports: [
     BrowserModule,
     NoopAnimationsModule,
     DragDropModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+    PortalModule
   ],
   providers: [],
   bootstrap: [AppComponent],
