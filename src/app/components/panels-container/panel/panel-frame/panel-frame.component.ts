@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class PanelFrameComponent implements OnInit {
 
   isShowingData:boolean = true;
-  showPortal = false;
+  showPortal = false; // TODO: Make it usable again
 
   title:string = "";
-  Data:any
+  data:any
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.Data);
+    console.log(this.data); // TO DELETE
   }
 
   showData(){

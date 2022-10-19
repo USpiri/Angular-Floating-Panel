@@ -8,7 +8,6 @@ import { CdkPortal, DomPortalHost, TemplatePortal } from '@angular/cdk/portal';
 })
 export class ExternalFrameComponent implements OnInit, AfterViewInit {
 
-  // @ViewChild('portal') private portal: CdkPortal | undefined;
   @ViewChild('portal') templatePortalContent: TemplateRef<unknown> | undefined;
   @Input() title:string = "";
 

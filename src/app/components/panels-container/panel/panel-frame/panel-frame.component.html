@@ -1,9 +1,13 @@
+<!-- Panel Frame -->
 <mat-card class="panel-container py-2">
+    <!-- Panel Header -->
     <div class="panel-header">
         <div class="d-flex flex-row justify-content-between">
+            <!-- Panel Title -->
             <div class="panel-header-title me-3">
                 {{ title }}
             </div>
+            <!-- Panel Buttons -->
             <div class="panel-header-buttons d-flex flex-row">
                 <mat-icon class="panel-action-btn open-new-tab" (click)="this.showPortal=true">open_in_new</mat-icon>
                 <mat-icon class="panel-action-btn show-data" (click)="showData()"
@@ -13,16 +17,18 @@
             </div>
         </div>
     </div>
+    <!-- Panel Body -->
     <div class="panel-body" *ngIf="isShowingData">
         <hr class="m-0 w-100 my-1">
         <div>
-            {{Data}}
-            <div [innerHTML]="Data.content"></div>
+            {{data}}
+            <div [innerHTML]="data.content"></div>
         </div>
     </div>
 </mat-card>
+<!-- External Windows -->
 <app-external-frame *ngIf="showPortal" [title]="title">
     <h2>Mostrando información desde otra ventana</h2>
     {{ title }}
-    {{ Data }}
+    {{ data }}
 </app-external-frame>

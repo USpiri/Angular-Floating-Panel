@@ -10,10 +10,10 @@ import { PanelsContainerComponent } from '../panels-container/panels-container.c
 })
 export class MainContainerComponent implements OnInit {
 
-  Data:any;
-  Backdrop:boolean = false;
-  Escape:boolean = false;
-  Animation:boolean = true;
+  data:any;
+  backdrop:boolean = false;
+  escape:boolean = false;
+  animation:boolean = true;
 
   exampleHTML:any = {
     content : "<div class=\"card\" style=\"width: 10px !important;\">\r\n  <div class=\"card-body text-dark\">\r\n    <h5 class=\"card-title\">Card title</h5>\r\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\r\n    <a href=\"#\" class=\"btn btn-primary\">Go somewhere</a>\r\n  </div>\r\n</div>"
@@ -27,7 +27,7 @@ export class MainContainerComponent implements OnInit {
   }
 
   OpenPanel(){
-    this.panels!.AddPanel( "Location" , PanelFrameComponent, this.Data, this.Backdrop, this.Escape, this.Animation);
+    this.panels!.AddPanel( "Location" , PanelFrameComponent, this.exampleHTML, this.backdrop, this.escape, this.animation);
   }
 
 }

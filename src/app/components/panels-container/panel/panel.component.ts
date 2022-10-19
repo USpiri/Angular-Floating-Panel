@@ -8,41 +8,48 @@ import { PanelsContainerComponent } from '../panels-container.component';
 })
 export class PanelComponent implements OnInit, AfterViewInit {
 
+  // Template container
   @ViewChild('container', { read: ViewContainerRef }) container:any;
 
+  //Required Variables
   uniqueID:any;
-  Self:any;
-  Component:any;
+  self:any;
+  component:any;
 
-  //Passed Data
+  //Dynamic Data
   title:string = "";
-  Data:any;
-  Center:boolean = false;
-  Position:any = {Top:'10%', Left:'10%'}
-  PanelBackdrop:boolean = false;
-  PanelEscape:boolean = false;
-  Animation:boolean = true;
+  data:any;
+  center:boolean = false;
+  position:any = {top:'10%', left:'10%'}
+  panelBackdrop:boolean = false; // TODO
+  resizable:boolean = false; // TODO
+  panelEscape:boolean = false;
+  animation:boolean = true;
 
   constructor(
-    private PanelsContainer:PanelsContainerComponent
+    private panelsContainer:PanelsContainerComponent
   ) { }
 
   ngAfterViewInit(): void {
     this.addComponent();
-    this.AddzIndex();
-    if (this.PanelBackdrop) {
+    this.addZIndex();
+
+    // Set backdrop
+    if (this.panelBackdrop) {
       document.getElementById("panel-" + this.uniqueID + "-backdrop")!.className += " panel-backdrop";
     }
 
-    if(this.Center){
+    // Set position
+    if(this.center){
       (<HTMLElement>document.getElementById("panel-" + this.uniqueID)).className += " center-panel";
     }else{
-        //Set CSS
-        (<HTMLElement>document.getElementById("panel-" + this.uniqueID)).style.top = this.Position.Top;
-        (<HTMLElement>document.getElementById("panel-" + this.uniqueID)).style.left = this.Position.Left;
+        //Set custom position
+        (<HTMLElement>document.getElementById("panel-" + this.uniqueID)).style.top = this.position.top;
+        (<HTMLElement>document.getElementById("panel-" + this.uniqueID)).style.left = this.position.left;
     }
 
-    if (this.Animation) {
+    // Set animation
+    if (this.animation) { // TODO: Make animation by default?
         document.getElementById("panel-" + this.uniqueID)!.className += " fade-in-out";
         setTimeout(() => {
             document.getElementById("panel-" + this.uniqueID)!.style.opacity = "1";
@@ -51,11 +58,13 @@ export class PanelComponent implements OnInit, AfterViewInit {
     else {
         document.getElementById("panel-" + this.uniqueID)!.style.opacity = "1";
     }
+
+    // Add event listener to close button
     var closeElements =  document.getElementById("panel-" + this.uniqueID)!.getElementsByClassName("close");
     for(let i = 0; i < closeElements.length; i++) {
         closeElements[i].addEventListener("click", ()=> {
-            this.PanelsContainer.RemovePanelFromArray(this.uniqueID);
-            this.DestroyPanel();
+            this.panelsContainer.RemovePanelFromArray(this.uniqueID);
+            this.destroyPanel();
         });
     }
   }
@@ -66,26 +75,30 @@ export class PanelComponent implements OnInit, AfterViewInit {
 
   addComponent() {
     // Create component 
-    const component = this.container.createComponent(this.Component);
+    const component = this.container.createComponent(this.component);
     //Init data and detectChanges  
-    ((component.instance)).Data = this.Data;
+    ((component.instance)).data = this.data;
     ((component.instance)).title = this.title;
-    ((component.instance)).PanelId = this.uniqueID;
+    ((component.instance)).panelId = this.uniqueID;
     component.changeDetectorRef.detectChanges();
   }
 
-  AddzIndex() {
+  // Set a (highest + 2) z-index to show the panel above everything
+  addZIndex() {
     var highest = this.findHighestZIndex();
     document.getElementById("panel-" + this.uniqueID)!.style.zIndex = (highest + 2).toString();
-    if (this.PanelBackdrop) {
+    if (this.panelBackdrop) {
         document.getElementById("panel-" + this.uniqueID + "-backdrop")!.style.zIndex = (highest + 1).toString();
     }
   }
 
-  DestroyPanel(){
+
+  destroyPanel(){
+    // Animation first
     document.getElementById("panel-" + this.uniqueID)!.style.opacity = "0";
+    // Then destroy
     setTimeout(() => {
-        this.Self.destroy();
+        this.self.destroy();
     }, 250);
   }
 
@@ -101,18 +114,20 @@ export class PanelComponent implements OnInit, AfterViewInit {
     return highest;
   }
 
+  // Wait for the user to press esc
   @HostListener('document:keydown', ['$event'])
   onKeydownHandler(event:any) {
-    if (this.PanelEscape) {
+    if (this.panelEscape) {
         if (event.keyCode === 27) {
-            if (this.IsFocused()) {
+            if (this.isFocused()) {
               (<HTMLElement>(document.getElementById("panel-" + this.uniqueID)!.getElementsByClassName("close")[0])).click();
             }
         }
     }
   }
 
-  IsFocused() {
+  // Check if it is the panel with the highest z-index
+  isFocused() {
     var current = parseInt(document.getElementById("panel-" + this.uniqueID)!.style.zIndex);
     var highest = this.findHighestZIndex();
     if (current === highest) {
