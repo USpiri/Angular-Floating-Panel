@@ -18,17 +18,18 @@
         </div>
     </div>
     <!-- Panel Body -->
-    <div class="panel-body" *ngIf="isShowingData">
-        <hr class="m-0 w-100 my-1">
+    <div class="panel-body" [ngClass]=" !isShowingData? 'data-close': ''" class="data-viewer">
+        <hr class="m-0 my-1">
         <div>
-            {{data}}
-            <div [innerHTML]="data.content"></div>
+            <!-- {{data}}
+            <div [innerHTML]="data.content"></div> -->
+            <ng-template #viewer></ng-template>
         </div>
     </div>
 </mat-card>
 <!-- External Windows -->
-<app-external-frame *ngIf="showPortal" [title]="title">
+<app-external-frame *ngIf="showPortal" [title]="title" (onCloseEvent)="showData()">
     <h2>Mostrando información desde otra ventana</h2>
     {{ title }}
-    {{ data }}
+    {{ data.content }}
 </app-external-frame>

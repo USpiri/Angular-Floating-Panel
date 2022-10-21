@@ -7,13 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular Floating Panels';
-  Data:any; // Property which can be used to transfer any kind of data to the Panel.
-  Backdrop:boolean = false;
-  Escape:boolean = false;
-  Animation:boolean = true;
-
-  constructor(){}
-  ngOnInit(){}
-
-  
 }

@@ -74,7 +74,7 @@ export class PanelComponent implements OnInit, AfterViewInit {
   }
 
   addComponent() {
-    // Create component 
+    // Create container component (Panel Frame)
     const component = this.container.createComponent(this.component);
     //Init data and detectChanges  
     ((component.instance)).data = this.data;

@@ -1,25 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-panel-frame',
   templateUrl: './panel-frame.component.html',
   styleUrls: ['./panel-frame.component.css']
 })
-export class PanelFrameComponent implements OnInit {
+export class PanelFrameComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('viewer', { read: ViewContainerRef }) viewer:any;
 
   isShowingData:boolean = true;
-  showPortal = false; // TODO: Make it usable again
+  showPortal = false;
 
   title:string = "";
-  data:any
+  data:any;
+  component:any;
 
   constructor() { }
+  ngAfterViewInit(): void {
+    const content = this.viewer.createComponent(this.data.content);
+    ((content.instance)).data = this.data.templateData;
+    content.changeDetectorRef.detectChanges();
+  }
 
   ngOnInit(): void {
-    console.log(this.data); // TO DELETE
   }
 
   showData(){
+    console.log("HOLA");
+    
     this.isShowingData = !this.isShowingData;
   }
 

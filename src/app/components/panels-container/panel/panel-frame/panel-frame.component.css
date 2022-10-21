@@ -16,3 +16,14 @@
 .panel-open{
     transform: rotate(180deg);
 }
+.data-close{
+    height: 0px;
+    width: 150px;
+}
+.data-viewer{
+    transition: all 1s;
+    overflow: hidden;
+}
+.panel-container{
+    transition: all 1s;
+}
