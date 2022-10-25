@@ -9,7 +9,7 @@
             </div>
             <!-- Panel Buttons -->
             <div class="panel-header-buttons d-flex flex-row">
-                <mat-icon class="panel-action-btn open-new-tab" (click)="this.showPortal=true">open_in_new</mat-icon>
+                <mat-icon class="panel-action-btn open-new-tab" (click)="this.showPortal=true" *ngIf="externalWindows">open_in_new</mat-icon>
                 <mat-icon class="panel-action-btn show-data" (click)="showData()"
                     [ngClass]=" isShowingData? 'panel-open': ''"
                 >expand_more</mat-icon>

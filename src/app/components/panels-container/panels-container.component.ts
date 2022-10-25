@@ -26,13 +26,13 @@ export class PanelsContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.panelService.subsVar==undefined) {    
+    if (this.panelService.subsVar == undefined) {    
       this.panelService.subsVar = this.panelService.    
       addPanel.subscribe((data:any) => {    
         this.addPanel(
           data.title,
           data.panelFrame,
-          data.template,
+          data.template, 
           data.backdrop,
           data.escape,
           data.animation
@@ -42,7 +42,7 @@ export class PanelsContainerComponent implements OnInit {
   }
 
   // TODO: Move functions to a new service "PanelsService"
-  addPanel( title:string, template:any, data:any = {}, backdrop = false, escape = false, animation = true, center = true, position:{top:string, left:string} = {top:"10%", left:"10%"}) {
+  addPanel( title:string, template:any, data:any = {}, backdrop = false, externalWindows = false, animation = true, center = true, position:{top:string, left:string} = {top:"10%", left:"10%"}) {
 
     // Create component 
     const component = this.panelsContainer.createComponent(this.panelTemplate);
@@ -57,7 +57,7 @@ export class PanelsContainerComponent implements OnInit {
     component.instance.center = center;
     component.instance.position = position;
     component.instance.panelBackdrop = backdrop;
-    component.instance.panelEscape = escape;
+    component.instance.externalWindows = externalWindows;
     component.instance.animation = animation;
     
     //Add to Panels array

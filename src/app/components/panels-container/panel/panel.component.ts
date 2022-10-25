@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, HostListener, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { PanelsContainerComponent } from '../panels-container.component';
+import { PanelsService } from '../service/panels.service';
 
 @Component({
   selector: 'app-panel',
@@ -23,11 +24,12 @@ export class PanelComponent implements OnInit, AfterViewInit {
   position:any = {top:'10%', left:'10%'}
   panelBackdrop:boolean = false; // TODO
   resizable:boolean = false; // TODO
-  panelEscape:boolean = false;
+  externalWindows:boolean = false;
   animation:boolean = true;
 
   constructor(
-    private panelsContainer:PanelsContainerComponent
+    private panelsContainer:PanelsContainerComponent,
+    private panelService:PanelsService
   ) { }
 
   ngAfterViewInit(): void {
@@ -63,7 +65,8 @@ export class PanelComponent implements OnInit, AfterViewInit {
     var closeElements =  document.getElementById("panel-" + this.uniqueID)!.getElementsByClassName("close");
     for(let i = 0; i < closeElements.length; i++) {
         closeElements[i].addEventListener("click", ()=> {
-            this.panelsContainer.removePanelFromArray(this.uniqueID);
+            this.panelService.onRemovePanelFromArray(this.uniqueID);
+            // this.panelsContainer.removePanelFromArray(this.uniqueID);
             this.destroyPanel();
         });
     }
@@ -80,6 +83,7 @@ export class PanelComponent implements OnInit, AfterViewInit {
     ((component.instance)).data = this.data;
     ((component.instance)).title = this.title;
     ((component.instance)).panelId = this.uniqueID;
+    ((component.instance)).externalWindows = this.externalWindows;
     component.changeDetectorRef.detectChanges();
   }
 
@@ -112,18 +116,6 @@ export class PanelComponent implements OnInit, AfterViewInit {
         }
     }
     return highest;
-  }
-
-  // Wait for the user to press esc
-  @HostListener('document:keydown', ['$event'])
-  onKeydownHandler(event:any) {
-    if (this.panelEscape) {
-        if (event.keyCode === 27) {
-            if (this.isFocused()) {
-              (<HTMLElement>(document.getElementById("panel-" + this.uniqueID)!.getElementsByClassName("close")[0])).click();
-            }
-        }
-    }
   }
 
   // Check if it is the panel with the highest z-index

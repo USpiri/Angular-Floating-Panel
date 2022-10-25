@@ -15,6 +15,7 @@ export class PanelFrameComponent implements OnInit, AfterViewInit {
   title:string = "";
   data:any;
   component:any;
+  externalWindows:boolean = true;
 
   constructor() { }
   ngAfterViewInit(): void {
@@ -27,8 +28,6 @@ export class PanelFrameComponent implements OnInit, AfterViewInit {
   }
 
   showData(){
-    console.log("HOLA");
-    
     this.isShowingData = !this.isShowingData;
   }
 
