@@ -16,6 +16,8 @@ export class MainContainerComponent implements OnInit {
   externalWindows:boolean = true;
   animation:boolean = true;
 
+  isTestData:boolean = true;
+
   exampleHTML:any = {
     content : "<div class=\"card\" style=\"width: 10px !important;\">\r\n  <div class=\"card-body text-dark\">\r\n    <h5 class=\"card-title\">Card title</h5>\r\n    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\r\n    <a href=\"#\" class=\"btn btn-primary\">Go somewhere</a>\r\n  </div>\r\n</div>"
   }
@@ -35,7 +37,7 @@ export class MainContainerComponent implements OnInit {
     }
   }
 
-  OpenPanel(){
+  openPanel(){
     this.panelService.onAddPanel( 
       "Location", 
       PanelFrameComponent, 

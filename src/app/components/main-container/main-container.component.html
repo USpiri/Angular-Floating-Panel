@@ -1,3 +1,3 @@
-<button (click)="OpenPanel()">Add Panel</button>
-
+<button (click)="openPanel()" class="btn btn-primary me-2">Add Panel</button><br>
+<mat-slide-toggle [(ngModel)]="externalWindows">externalWindows: {{externalWindows}}</mat-slide-toggle><br>
 <app-panels-container #panels></app-panels-container>

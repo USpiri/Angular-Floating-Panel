@@ -13,6 +13,9 @@ import { PanelFrameComponent } from './components/panels-container/panel/panel-f
 import { ExternalFrameComponent } from './components/panels-container/panel/panel-frame/external-frame/external-frame.component';
 import { PortalModule } from '@angular/cdk/portal';
 import { PanelsService } from './components/panels-container/service/panels.service';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { PanelsService } from './components/panels-container/service/panels.serv
     DragDropModule,
     MatCardModule,
     MatIconModule,
-    PortalModule
+    PortalModule,
+    MatSlideToggleModule,
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     PanelsService
