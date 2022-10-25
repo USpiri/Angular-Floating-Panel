@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { PanelTemplate } from './IPanel';
+import { PanelTemplate } from '../models/IPanel';
 
 @Injectable({
   providedIn: 'root'

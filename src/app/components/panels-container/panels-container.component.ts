@@ -1,6 +1,6 @@
 import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { PanelComponent } from './panel/panel.component';
-import { PanelTemplate } from './service/IPanel';
+import { PanelTemplate } from './models/IPanel';
 import { PanelsService } from './service/panels.service';
 
 @Component({
