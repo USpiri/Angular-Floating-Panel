@@ -13,7 +13,7 @@ export class MainContainerComponent implements OnInit {
 
   data:any;
   backdrop:boolean = false;
-  externalWindows:boolean = false;
+  externalWindows:boolean = true;
   animation:boolean = true;
 
   exampleHTML:any = {
@@ -36,8 +36,14 @@ export class MainContainerComponent implements OnInit {
   }
 
   OpenPanel(){
-    this.panelService.onAddPanel( "Location" , PanelFrameComponent, this.exampleComponent, this.backdrop, this.externalWindows, this.animation);
-    // this.panels!.addPanel( "Location" , PanelFrameComponent, this.exampleComponent, this.backdrop, this.escape, this.animation);
+    this.panelService.onAddPanel( 
+      "Location", 
+      PanelFrameComponent, 
+      this.exampleComponent, 
+      this.backdrop, 
+      this.externalWindows, 
+      this.animation 
+    );
   }
 
 }

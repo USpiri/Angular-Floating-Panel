@@ -27,18 +27,34 @@ export class PanelsContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.panelService.subsVar == undefined) {    
-      this.panelService.subsVar = this.panelService.    
-      addPanel.subscribe((data:PanelTemplate) => {    
-        this.addPanel(
-          data.title,
-          data.panelFrame,
-          data.dataTemplate, 
-          data.backdrop,
-          data.externalWindows,
-          data.animation
-        );    
-      });    
+    if (this.panelService.subscriptions.length === 0) {    
+      this.panelService.subscriptions.push( 
+        this.panelService.addPanel.subscribe((data:PanelTemplate) => {    
+          this.addPanel(
+            data.title,
+            data.panelFrame,
+            data.dataTemplate, 
+            data.backdrop,
+            data.externalWindows,
+            data.animation
+          );
+        }
+      ));
+      this.panelService.subscriptions.push( 
+        this.panelService.removePanel.subscribe(( panelId:string ) => {    
+          this.removePanel( panelId );
+        }
+      ));
+      this.panelService.subscriptions.push( 
+        this.panelService.removePanelFromArray.subscribe(( panelId:string ) => {    
+          this.removePanelFromArray( panelId );
+        }
+      ));
+      this.panelService.subscriptions.push( 
+        this.panelService.removeAll.subscribe(( panelId:string ) => {    
+          this.removeAll();
+        }
+      ));
     }
   }
 

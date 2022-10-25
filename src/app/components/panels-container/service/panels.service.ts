@@ -9,7 +9,8 @@ export class PanelsService {
 
   constructor() {}
 
-  addPanel = new EventEmitter();    
+  addPanel = new EventEmitter();
+  subscriptions: Subscription[] = [];  
   subsVar!: Subscription;
     
   onAddPanel( title:string , panelFrame:any , template:any, backdrop:boolean, externalWindows:boolean, animation:boolean ) {    
