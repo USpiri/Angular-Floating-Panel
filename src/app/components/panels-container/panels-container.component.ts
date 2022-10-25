@@ -59,7 +59,7 @@ export class PanelsContainerComponent implements OnInit {
   }
 
   // TODO: Move functions to a new service "PanelsService"
-  addPanel( title:string, template:any, data:any = {}, backdrop = false, externalWindows = false, animation = true, center = true, position:{top:string, left:string} = {top:"10%", left:"10%"}) {
+  addPanel( title:string, panelFrame:any, template:any = {}, backdrop = false, externalWindows = false, animation = true, center = true, position:{top:string, left:string} = {top:"10%", left:"10%"}) {
 
     // Create component 
     const component = this.panelsContainer.createComponent(this.panelTemplate);
@@ -68,9 +68,9 @@ export class PanelsContainerComponent implements OnInit {
     var uniqueID = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
     component.instance.uniqueID = uniqueID;
     component.instance.self = component;
-    component.instance.component = template;
+    component.instance.component = panelFrame;
     component.instance.title = title;
-    component.instance.data = data;
+    component.instance.template = template;
     component.instance.center = center;
     component.instance.position = position;
     component.instance.panelBackdrop = backdrop;

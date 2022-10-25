@@ -19,7 +19,7 @@ export class PanelComponent implements OnInit, AfterViewInit {
 
   //Dynamic Data
   title:string = "";
-  data:any;
+  template:any;
   center:boolean = false;
   position:any = {top:'10%', left:'10%'}
   panelBackdrop:boolean = false; // TODO
@@ -79,7 +79,7 @@ export class PanelComponent implements OnInit, AfterViewInit {
     // Create container component (Panel Frame)
     const component = this.container.createComponent(this.component);
     //Init data and detectChanges  
-    ((component.instance)).data = this.data;
+    ((component.instance)).template = this.template;
     ((component.instance)).title = this.title;
     ((component.instance)).panelId = this.uniqueID;
     ((component.instance)).externalWindows = this.externalWindows;

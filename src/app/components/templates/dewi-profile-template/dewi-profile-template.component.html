@@ -1,0 +1,40 @@
+<div class="row template-profile-container">
+    <div class="">
+        <div class="d-flex flex-row align-items-center justify-content-center my-2">
+            <img [src]="templateData.dewiBuilder.picture" class="template-profile-image me-3" alt="DeWi builder profile image">
+            <div>
+                <h3 class="mt-3 mb-0">{{ templateData.dewiBuilder.name }}</h3>
+                <p>{{ templateData.dewiBuilder.id }}</p>
+            </div>
+        </div>
+        <hr />
+        <mat-list>
+            <mat-list-item>
+                <mat-icon mat-list-icon>alternate_email</mat-icon>
+                <div mat-line>{{ templateData.dewiBuilder.username }}</div>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon mat-list-icon>chevron_right</mat-icon>
+                <div mat-line><strong>Email: </strong>{{ templateData.dewiBuilder.email }}</div>
+                <div mat-line><strong>Phone: </strong>{{ templateData.dewiBuilder.phone }}</div>
+                <div mat-line><strong>Address: </strong>{{ templateData.dewiBuilder.address }}</div>
+            </mat-list-item>
+            <div class="d-flex flex-row mt-3">
+                <mat-list-item>
+                    <mat-icon mat-list-icon>currency_exchange</mat-icon>
+                    <div mat-line class="mt-2"><h3>{{ templateData.dewiBuilder.average_performance }} HNT</h3></div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>hexagon</mat-icon>
+                    <div mat-line class="mt-2"><h3>{{ templateData.dewiBuilder.pools_amount }} POOLS</h3></div>
+                </mat-list-item>    
+            </div>
+        </mat-list>
+        <button mat-flat-button color="primary" class="w-100 py-1 my-2">
+            <div class="d-flex align-items-center justify-content-center">
+                <mat-icon class="me-2">mail</mat-icon>
+                CONTACT
+            </div>
+        </button>
+    </div>
+</div>

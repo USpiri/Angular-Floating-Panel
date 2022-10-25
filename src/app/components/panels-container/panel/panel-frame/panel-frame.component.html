@@ -1,7 +1,7 @@
 <!-- Panel Frame -->
-<mat-card class="panel-container py-2">
+<mat-card class="panel-container py-2 px-0">
     <!-- Panel Header -->
-    <div class="panel-header">
+    <div class="panel-header px-3">
         <div class="d-flex flex-row justify-content-between">
             <!-- Panel Title -->
             <div class="panel-header-title me-3">
@@ -20,9 +20,7 @@
     <!-- Panel Body -->
     <div class="panel-body" [ngClass]=" !isShowingData? 'data-close': ''" class="data-viewer">
         <hr class="m-0 my-1">
-        <div>
-            <!-- {{data}}
-            <div [innerHTML]="data.content"></div> -->
+        <div class="px-3">
             <ng-template #viewer></ng-template>
         </div>
     </div>
@@ -31,5 +29,5 @@
 <app-external-frame *ngIf="showPortal" [title]="title" (onCloseEvent)="showData()">
     <h2>Mostrando información desde otra ventana</h2>
     {{ title }}
-    {{ data.content }}
+    {{ template.templateData }}
 </app-external-frame>

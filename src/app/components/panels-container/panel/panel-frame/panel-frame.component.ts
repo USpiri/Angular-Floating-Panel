@@ -13,14 +13,14 @@ export class PanelFrameComponent implements OnInit, AfterViewInit {
   showPortal = false;
 
   title:string = "";
-  data:any;
+  template:any;
   component:any;
   externalWindows:boolean = true;
 
   constructor() { }
   ngAfterViewInit(): void {
-    const content = this.viewer.createComponent(this.data.content);
-    ((content.instance)).data = this.data.templateData;
+    const content = this.viewer.createComponent(this.template.template);
+    ((content.instance)).templateData = this.template.templateData;
     content.changeDetectorRef.detectChanges();
   }
 

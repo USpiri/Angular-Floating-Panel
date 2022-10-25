@@ -1,0 +1,9 @@
+<div class="template-container d-flex flex-column">
+    <div class="template-header d-flex flex-row align-items-center justify-content-center template-traslucent my-1">
+        <mat-icon class="material-icons-outlined me-2 template-traslucent map-icon">location_on</mat-icon>
+        <span class="fs-2">{{templateData.title}}</span>
+    </div>
+    <div class="template-body">
+        <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(templateData.src)" width="500" height="350" style="border:0;" allowfullscreen loading="lazy"></iframe>
+    </div>
+</div>

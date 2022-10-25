@@ -16,6 +16,13 @@ import { PanelsService } from './components/panels-container/service/panels.serv
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ImageTemplateComponent } from './components/templates/image-template/image-template.component';
+import { VideoTemplateComponent } from './components/templates/video-template/video-template.component';
+import { StreetTemplateComponent } from './components/templates/street-template/street-template.component';
+import { DewiProfileTemplateComponent } from './components/templates/dewi-profile-template/dewi-profile-template.component';
+import { LocationTemplateComponent } from './components/templates/location-template/location-template.component';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -25,6 +32,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PanelComponent,
     PanelFrameComponent,
     ExternalFrameComponent,
+    ImageTemplateComponent,
+    VideoTemplateComponent,
+    StreetTemplateComponent,
+    DewiProfileTemplateComponent,
+    LocationTemplateComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +47,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PortalModule,
     MatSlideToggleModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatListModule,
+    MatButtonModule,
   ],
   providers: [
     PanelsService

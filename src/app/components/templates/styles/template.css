@@ -1,0 +1,22 @@
+.template-image{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.template-media-container{
+    width: 500px;
+    height: 350px;
+}
+.template-traslucent{
+    opacity: 70%;
+}
+.template-profile-image{
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid white;
+    background-color: white;
+    padding: 2px;
+}
