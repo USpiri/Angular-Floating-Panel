@@ -1,5 +1,6 @@
 import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { PanelComponent } from './panel/panel.component';
+import { PanelTemplate } from './service/IPanel';
 import { PanelsService } from './service/panels.service';
 
 @Component({
@@ -28,13 +29,13 @@ export class PanelsContainerComponent implements OnInit {
   ngOnInit(): void {
     if (this.panelService.subsVar == undefined) {    
       this.panelService.subsVar = this.panelService.    
-      addPanel.subscribe((data:any) => {    
+      addPanel.subscribe((data:PanelTemplate) => {    
         this.addPanel(
           data.title,
           data.panelFrame,
-          data.template, 
+          data.dataTemplate, 
           data.backdrop,
-          data.escape,
+          data.externalWindows,
           data.animation
         );    
       });    
