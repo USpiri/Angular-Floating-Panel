@@ -1,4 +1,5 @@
 <div id="panel-{{uniqueID}}-backdrop"></div>
-<div id="panel-{{uniqueID}}" class="multiple-draggable-panel" (mousedown)="addZIndex()" cdkDrag>
-    <ng-template #container ></ng-template>
+<div id="panel-{{uniqueID}}" class="multiple-draggable-panel" (mousedown)="addZIndex()" cdkDrag >
+    <div cdkDragHandle class="drag-handle" [ngClass]="externalWindows? 'drag-handle-open' : 'drag-handle-close'"></div>
+    <ng-template #container></ng-template>
 </div>

@@ -28,7 +28,6 @@ export class PanelComponent implements OnInit, AfterViewInit {
   animation:boolean = true;
 
   constructor(
-    private panelsContainer:PanelsContainerComponent,
     private panelService:PanelsService
   ) { }
 

@@ -30,3 +30,20 @@
     -o-transition: opacity 0.2s ease-in-out;
     opacity: 0;
 }
+
+.drag-handle{
+    height: 30px;
+    position: absolute;
+    z-index: 100;
+    background-color: transparent;
+    cursor: grab;
+}
+.drag-handle-open{
+    width: calc(100% - 90px);
+}
+.drag-handle-close{
+    width: calc(100% - 65px);
+}
+.drag-handle:active:hover{
+    cursor: grabbing;
+}
