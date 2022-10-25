@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ExampleTemplateComponent } from '../example-template/example-template.component';
 import { PanelFrameComponent } from '../panels-container/panel/panel-frame/panel-frame.component';
 import { PanelsContainerComponent } from '../panels-container/panels-container.component';
+import { PanelsService } from '../panels-container/service/panels.service';
 
 @Component({
   selector: 'app-main-container',
@@ -23,7 +24,9 @@ export class MainContainerComponent implements OnInit {
 
   @ViewChild(PanelsContainerComponent, {static: false}) panels: PanelsContainerComponent | undefined;
 
-  constructor() { }
+  constructor(
+    private panelService:PanelsService
+  ) { }
 
   ngOnInit(): void {
     this.exampleComponent = {
@@ -33,7 +36,8 @@ export class MainContainerComponent implements OnInit {
   }
 
   OpenPanel(){
-    this.panels!.AddPanel( "Location" , PanelFrameComponent, this.exampleComponent, this.backdrop, this.escape, this.animation);
+    this.panelService.onAddPanel( "Location" , PanelFrameComponent, this.exampleComponent, this.backdrop, this.escape, this.animation);
+    // this.panels!.addPanel( "Location" , PanelFrameComponent, this.exampleComponent, this.backdrop, this.escape, this.animation);
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { PanelComponent } from './panel/panel.component';
+import { PanelsService } from './service/panels.service';
 
 @Component({
   selector: 'app-panels-container',
@@ -18,16 +19,30 @@ export class PanelsContainerComponent implements OnInit {
   panelsArray:any = [];
 
   constructor(
+    private panelService:PanelsService
   ) { 
     // Set Panel Frame Template - TODO: Set it dynamically from "PanelsService"
     this.panelTemplate = PanelComponent
   }
 
   ngOnInit(): void {
+    if (this.panelService.subsVar==undefined) {    
+      this.panelService.subsVar = this.panelService.    
+      addPanel.subscribe((data:any) => {    
+        this.addPanel(
+          data.title,
+          data.panelFrame,
+          data.template,
+          data.backdrop,
+          data.escape,
+          data.animation
+        );    
+      });    
+    }
   }
 
   // TODO: Move functions to a new service "PanelsService"
-  AddPanel( title:string, template:any, data:any = {}, backdrop = false, escape = false, animation = true, center = true, position:{top:string, left:string} = {top:"10%", left:"10%"}) {
+  addPanel( title:string, template:any, data:any = {}, backdrop = false, escape = false, animation = true, center = true, position:{top:string, left:string} = {top:"10%", left:"10%"}) {
 
     // Create component 
     const component = this.panelsContainer.createComponent(this.panelTemplate);
@@ -52,12 +67,12 @@ export class PanelsContainerComponent implements OnInit {
     return uniqueID;
   }
 
-  RemovePanel(panelId:string){
+  removePanel(panelId:string){
     // Click on close button
     (<HTMLElement>(document.getElementById("panel-" + panelId)!.getElementsByClassName("close")[0])).click();
   }
 
-  RemovePanelFromArray(panelId:string){
+  removePanelFromArray(panelId:string){
     for (var i = this.panelsArray.length - 1; i >= 0; --i) {
       if (this.panelsArray[i].Id == panelId) {
         this.panelsArray.splice(i,1);
@@ -65,7 +80,7 @@ export class PanelsContainerComponent implements OnInit {
     } 
   }
 
-  RemoveAll() {
+  removeAll() {
     this.panelsContainer.clear();
     this.panelsArray = [];
   }

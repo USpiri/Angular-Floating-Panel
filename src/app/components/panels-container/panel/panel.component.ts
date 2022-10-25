@@ -63,7 +63,7 @@ export class PanelComponent implements OnInit, AfterViewInit {
     var closeElements =  document.getElementById("panel-" + this.uniqueID)!.getElementsByClassName("close");
     for(let i = 0; i < closeElements.length; i++) {
         closeElements[i].addEventListener("click", ()=> {
-            this.panelsContainer.RemovePanelFromArray(this.uniqueID);
+            this.panelsContainer.removePanelFromArray(this.uniqueID);
             this.destroyPanel();
         });
     }

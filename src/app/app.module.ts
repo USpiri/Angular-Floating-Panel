@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { PanelFrameComponent } from './components/panels-container/panel/panel-frame/panel-frame.component';
 import { ExternalFrameComponent } from './components/panels-container/panel/panel-frame/external-frame/external-frame.component';
 import { PortalModule } from '@angular/cdk/portal';
+import { PanelsService } from './components/panels-container/service/panels.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { PortalModule } from '@angular/cdk/portal';
     MatIconModule,
     PortalModule
   ],
-  providers: [],
+  providers: [
+    PanelsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
