@@ -32,9 +32,15 @@
                 <div><strong>Owner: </strong>{{ templateData.location.properties.owner }}</div>
             </div>
             <div class="image-container d-flex gap-3 mt-2">
-                <img *ngFor="let image of templateData.location.properties.roof_images" [src]="image"
-                    class="template-image"
+                <div class="image-subcontainer position-relative w-100" 
+                    *ngFor="let image of templateData.location.properties.roof_images"
                 >
+                    <img [src]="image" class="template-image image-hover">
+                    <div class="overlay" (click)="openImagePanel(image)">
+                        <div class="overlay-background"></div>
+                        <mat-icon class="overlay-icon">visibility</mat-icon>
+                    </div>
+                </div>
             </div>
             <div class="d-flex gap-3">
                 <button mat-flat-button color="primary" class="w-100 py-1 my-2" 

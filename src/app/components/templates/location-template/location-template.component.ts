@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PanelFrameComponent } from '../../panels-container/panel/panel-frame/panel-frame.component';
 import { PanelsService } from '../../panels-container/service/panels.service';
+import { ImageTemplateComponent } from '../image-template/image-template.component';
 import { StreetTemplateComponent } from '../street-template/street-template.component';
 import { VideoTemplateComponent } from '../video-template/video-template.component';
 
@@ -59,6 +60,24 @@ export class LocationTemplateComponent implements OnInit {
       this.templateData.location.properties.name, 
       PanelFrameComponent, 
       streetComponent, 
+      false, 
+      true, 
+      true 
+    );
+  }
+
+  openImagePanel(image:string){
+    let imageComponent = {
+      template: ImageTemplateComponent,
+      templateData: {
+        title: this.templateData.location.properties.name,
+        image: image
+      }
+    }
+    this.panelService.onAddPanel( 
+      this.templateData.location.properties.name, 
+      PanelFrameComponent, 
+      imageComponent, 
       false, 
       true, 
       true 
