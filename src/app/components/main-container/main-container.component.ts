@@ -62,14 +62,14 @@ export class MainContainerComponent implements OnInit {
     this.imageComponent = {
       template: ImageTemplateComponent,
       templateData: {
-        title: 'Location Name',
+        title: 'Image Name',
         image: 'https://picsum.photos/id/237/900/700'
       }
     }
     this.videoComponent = {
       template: VideoTemplateComponent,
       templateData: {
-        title: 'Location Name',
+        title: 'Video Name',
         video: 'https://www.youtube.com/embed/-4ZEuzKonss'
       }
     }
@@ -141,7 +141,7 @@ export class MainContainerComponent implements OnInit {
 
   openDeWiPanel(){
     this.panelService.onAddPanel( 
-      "Location", 
+      this.dewiProfileComponent.templateData.dewiBuilder.username, 
       PanelFrameComponent, 
       this.dewiProfileComponent, 
       this.backdrop, 
@@ -152,7 +152,7 @@ export class MainContainerComponent implements OnInit {
 
   openVideoPanel(){
     this.panelService.onAddPanel( 
-      "Location", 
+      "Video", 
       PanelFrameComponent, 
       this.videoComponent, 
       this.backdrop, 
@@ -163,7 +163,7 @@ export class MainContainerComponent implements OnInit {
 
   openImagePanel(){
     this.panelService.onAddPanel( 
-      "Location", 
+      "Image", 
       PanelFrameComponent, 
       this.imageComponent, 
       this.backdrop, 
@@ -174,7 +174,7 @@ export class MainContainerComponent implements OnInit {
 
   openStreetPanel(){
     this.panelService.onAddPanel( 
-      "Location", 
+      "Street View", 
       PanelFrameComponent, 
       this.streetComponent, 
       this.backdrop, 
