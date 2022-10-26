@@ -5,6 +5,7 @@ import { PanelsContainerComponent } from '../panels-container/panels-container.c
 import { PanelsService } from '../panels-container/service/panels.service';
 import { DewiProfileTemplateComponent } from '../templates/dewi-profile-template/dewi-profile-template.component';
 import { ImageTemplateComponent } from '../templates/image-template/image-template.component';
+import { LocationTemplateComponent } from '../templates/location-template/location-template.component';
 import { StreetTemplateComponent } from '../templates/street-template/street-template.component';
 import { VideoTemplateComponent } from '../templates/video-template/video-template.component';
 
@@ -96,13 +97,97 @@ export class MainContainerComponent implements OnInit {
         }
       }
     }
+    this.locationComponent = {
+      template: LocationTemplateComponent,
+      templateData: {
+        title: 'Location Name',
+        location: {
+          type: "Feature",
+          properties: {
+            name: "location-8362346",
+            owner: "14A7pwCsFtPtoFS6LQTV99hdkyDAc7B7ZtNrJX5KbFt9NEDHJYr",
+            timestamp_added: "2022-02-02T20:54:30.000000Z",
+    
+            address: "Arévalo 2357, Buenos Aires, Argentina",
+            roof_images: [
+              "https://media-cdn.tripadvisor.com/media/photo-s/0b/0e/3b/f7/vista-desde-el-ultimo.jpg",
+              "http://emilysalzmann.com.ar/wp-content/uploads/2020/01/getFoto-1.jpg"
+            ],
+            isVerified: true,
+            postal_code: 5042,
+            internet: "",
+            video: "https://www.youtube.com/embed/-4ZEuzKonss",
+            street_view: "https://www.google.com/maps/embed?pb=!4v1666738018239!6m8!1m7!1sesfVrRKp0vCsjiFhB-TLrg!2m2!1d-34.60395858550137!2d-58.38161712257183!3f43.005085!4f0!5f0.7820865974627469"
+          },
+          geometry: {
+            type: "Point",
+            coordinates: [-58.503728, -34.63349]
+          }
+        }
+      }
+    }
   }
 
   openPanel(){
     this.panelService.onAddPanel( 
       "Location", 
       PanelFrameComponent, 
+      this.exampleComponent, 
+      this.backdrop, 
+      this.externalWindows, 
+      this.animation 
+    );
+  }
+
+  openDeWiPanel(){
+    this.panelService.onAddPanel( 
+      "Location", 
+      PanelFrameComponent, 
       this.dewiProfileComponent, 
+      this.backdrop, 
+      this.externalWindows, 
+      this.animation 
+    );
+  }
+
+  openVideoPanel(){
+    this.panelService.onAddPanel( 
+      "Location", 
+      PanelFrameComponent, 
+      this.videoComponent, 
+      this.backdrop, 
+      this.externalWindows, 
+      this.animation 
+    );
+  }
+
+  openImagePanel(){
+    this.panelService.onAddPanel( 
+      "Location", 
+      PanelFrameComponent, 
+      this.imageComponent, 
+      this.backdrop, 
+      this.externalWindows, 
+      this.animation 
+    );
+  }
+
+  openStreetPanel(){
+    this.panelService.onAddPanel( 
+      "Location", 
+      PanelFrameComponent, 
+      this.streetComponent, 
+      this.backdrop, 
+      this.externalWindows, 
+      this.animation 
+    );
+  }
+
+  openLocationPanel(){
+    this.panelService.onAddPanel( 
+      "Location", 
+      PanelFrameComponent, 
+      this.locationComponent, 
       this.backdrop, 
       this.externalWindows, 
       this.animation 

@@ -1,3 +1,8 @@
 <button (click)="openPanel()" class="btn btn-primary me-2">Add Panel</button><br>
+<button (click)="openVideoPanel()" class="btn btn-primary me-2">Open Video Panel</button><br>
+<button (click)="openImagePanel()" class="btn btn-primary me-2">Open Image Panel</button><br>
+<button (click)="openStreetPanel()" class="btn btn-primary me-2">Open Street Panel</button><br>
+<button (click)="openLocationPanel()" class="btn btn-primary me-2">Open Location Panel</button><br>
+<button (click)="openDeWiPanel()" class="btn btn-primary me-2">Open DeWi Profiole Panel</button><br>
 <mat-slide-toggle [(ngModel)]="externalWindows">externalWindows: {{externalWindows}}</mat-slide-toggle><br>
 <app-panels-container #panels></app-panels-container>
