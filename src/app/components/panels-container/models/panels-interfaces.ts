@@ -8,3 +8,8 @@ export interface PanelTemplate {
     center?:boolean, 
     position?:{top:string, left:string}
 }
+
+export interface PanelTemplateData {
+    template:any;
+    templateData:any;
+}

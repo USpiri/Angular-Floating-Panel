@@ -1,5 +1,5 @@
 import { AfterViewInit, ApplicationRef, Component, Injector, Input, Output, OnInit, TemplateRef, ViewChild, ViewContainerRef, EventEmitter } from '@angular/core';
-import { CdkPortal, DomPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
+import { DomPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
 
 @Component({
   selector: 'app-external-frame',

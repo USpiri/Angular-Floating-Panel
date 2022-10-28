@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { PanelTemplate } from '../models/IPanel';
+import { PanelTemplateData } from '../models/panels-interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class PanelsService {
   subscriptions: Subscription[] = [];  
   subsVar!: Subscription;
     
-  onAddPanel( title:string , panelFrame:any , template:any, backdrop:boolean, externalWindows:boolean, animation:boolean ) {    
+  onAddPanel( title:string , panelFrame:any , template:PanelTemplateData, backdrop:boolean, externalWindows:boolean, animation:boolean ) {    
     this.addPanel.emit({
       title:title,
       panelFrame:panelFrame,

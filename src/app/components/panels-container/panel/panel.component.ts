@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { PanelTemplateData } from '../models/panels-interfaces';
 import { PanelsContainerComponent } from '../panels-container.component';
 import { PanelsService } from '../service/panels.service';
 
@@ -19,7 +20,7 @@ export class PanelComponent implements OnInit, AfterViewInit {
 
   //Dynamic Data
   title:string = "";
-  template:any;
+  template:PanelTemplateData | undefined;
   center:boolean = false;
   position:any = {top:'10%', left:'10%'}
   panelBackdrop:boolean = false; // TODO
